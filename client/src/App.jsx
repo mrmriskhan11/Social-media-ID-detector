@@ -16,8 +16,9 @@ import {
   Trash2
 } from 'lucide-react';
 
-// Backend base URL
-const API_BASE = window.location.origin.includes('localhost') ? 'http://localhost:5000/api' : '/api';
+// Backend base URL (resolves to VITE_API_URL environment variable if present, or localhost/relative path)
+const API_BASE = import.meta.env.VITE_API_URL || 
+  (window.location.origin.includes('localhost') ? 'http://localhost:5000/api' : '/api');
 
 function App() {
   // State variables
